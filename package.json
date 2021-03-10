@@ -7,9 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yankue",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yankue/easy-roblox-api"
   }
 }
