@@ -64,7 +64,7 @@ module.exports = async function(identifier, type) {
 
         if(type == "id") {
             fetch(`https://users.roblox.com/v1/users/${identifier}/`).then(async (response) => {
-                if(response.status == 404) return reject("No user found.")
+                if(response.status == 404) return reject("Not found.")
                 response = await response.json();
 
                 getUserDetails(response.id).then(finished => {
@@ -75,7 +75,7 @@ module.exports = async function(identifier, type) {
             fetch(`https://api.roblox.com/users/get-by-username?username=${identifier}`).then(async (response) => {
                 response = await response.json();
                 if(response.success !== 'undefined') {
-                    if(response.success == false) return reject("No user found.");
+                    if(response.success == false) return reject("Not found.");
                 }
                 getUserDetails(response.Id).then(finished => {
                     resolve(finished);
