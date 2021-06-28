@@ -44,12 +44,10 @@ This will log something like this:
 		count: 69,
 		ids: [following-ids-array]
 	},
-	games: {
-		games: [
-			{ id: <id-of-game>, name: <name-of-game>, description: <description-of-game>, visits: <game-visits-count> },
-			{ id: 3984, name: 'Some-name', description: 'good-game', visits: 3000 }
-		]
-	}
+	games: [
+		{ id: <id-of-game>, name: <name-of-game>, description: <description-of-game>, visits: <game-visits-count> },
+		{ id: 3984, name: 'Some-name', description: 'good-game', visits: 3000 }
+	]
 }
 ```
 As an alternative, you can get user information using an ID:
