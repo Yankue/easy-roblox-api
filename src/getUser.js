@@ -1,22 +1,26 @@
 const fetch = require('node-fetch');
 
+/**
+ * 
+ * @param {Number} UserID ID of the user
+ */
 async function getUserDetails(userid) {
     return new Promise((resolve, reject) => {
         fetch(`https://users.roblox.com/v1/users/${userid}/`).then(async (basicData) => {
-            basicData = await basicData.json();
             fetch(`https://users.roblox.com/v1/users/${userid}/status`).then(async (statusResponse) => {
-                statusResponse = await statusResponse.json();
                 fetch(`https://friends.roblox.com/v1/users/${userid}/followers`).then(async (followersResponse) => {
                     fetch(`https://friends.roblox.com/v1/users/${userid}/friends`).then(async (friendsResponse) => {
                         fetch(`https://friends.roblox.com/v1/users/${userid}/followings`).then(async (followingResponse) => {
                             fetch(`https://thumbnails.roblox.com/v1/users/avatar?userIds=${userid}&size=720x720&format=Png&isCircular=false`).then(async (avatarResponse) => {
                                 fetch(`https://games.roblox.com/v2/users/${userid}/games?sortOrder=Asc&limit=10`).then(async (gameResponse) => {
+
                                     followersResponse = await followersResponse.json();
                                     friendsResponse = await friendsResponse.json();
                                     followingResponse = await followingResponse.json();
                                     avatarResponse = await avatarResponse.json();
                                     gameResponse = await gameResponse.json();
-
+                                    basicData = await basicData.json();
+                                    statusResponse = await statusResponse.json();
 
                                     let followersArr = [];
                                     followersResponse.data.forEach(user => {
@@ -31,9 +35,14 @@ async function getUserDetails(userid) {
                                         followingArr.push(user.id);
                                     });
                                     let gamesArr = [];
+                                    /*
                                     gameResponse.data.forEach(game => {
                                         gamesArr.push([game.id, game.name, game.description, game.placeVisits])
                                     });
+                                    */
+                                    for (const game of gameResponse.data) {
+                                        gamesArr.push({ "id": game.id, "name": game.name, "description": game.description, "visits": game.placeVisits});
+                                    };
 
                                     resolve({
                                         "id": basicData.id,
@@ -54,10 +63,7 @@ async function getUserDetails(userid) {
                                             "count": followingArr.length,
                                             "ids": followingArr
                                         },
-                                        "games": {
-                                            "count": gamesArr.length,
-                                            "games": gamesArr
-                                        }
+                                        "games": gamesArr
                                     });
                                 })
                             });

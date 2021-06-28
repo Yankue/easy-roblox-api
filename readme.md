@@ -1,6 +1,6 @@
 # easy-roblox-api
-## Extremely easy package to easily fetch data the Roblox API.
-* Beginner Friendly
+## Extremely easy package to easily fetch data from the Roblox API.
+* Beginner friendly
 * No bugs discovered till date
 
 # Installation
@@ -24,7 +24,7 @@ roblox.getUser("Some rbx username", "username").then(response => {
 ```
 
 This will log something like this:
-```js
+```json
 {
   id: 1,
   username: 'John Doe',
@@ -45,10 +45,9 @@ This will log something like this:
     ids: [following-ids-array]
   },
   games: {
-    count: 2,
     games: [
-      [ID, Name, Description, Visits],
-      [ID, Name, Description, Visits]
+      { id: <id-of-game>, name: <name-of-game>, description: <description-of-game>, visits: <game-visits-count> },
+      { id: 3984, name: 'Some-name', description: 'good-game', visits: 3000 }
     ]
   }
 }
