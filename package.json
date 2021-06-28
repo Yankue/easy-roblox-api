@@ -6,7 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["roblox", "easy", "api", "object orientated", "rbx"],
+  "keywords": [
+    "roblox",
+    "easy",
+    "api",
+    "object orientated",
+    "rbx"
+  ],
   "author": "Yankue",
   "license": "ISC",
   "dependencies": {
