@@ -24,7 +24,7 @@ roblox.getUser("Some rbx username", "username").then(response => {
 ```
 
 This will log something like this:
-```json
+```python
 {
   id: 1,
   username: 'John Doe',
